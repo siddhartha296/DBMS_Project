@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details About Applied Queries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Details About Applied Queries</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="objective.html">Objective</a></li>
+                <li><a href="requirements.html">Requirements Gathering</a></li>
+                <li><a href="er_diagram.html">ER Diagram</a></li>
+                <li><a href="entity_identification.html">Entity Identification</a></li>
+                <li><a href="database_schema.html">Database Schema</a></li>
+                <li><a href="creating_database.html">Creating Database Using MySQL</a></li>
+                <li><a href="normalization.html">Normalization</a></li>
+                <li><a href="conclusion.html">Conclusion</a></li>
+            </ul>
+        </nav>
+        <div id="content">
+            <section>
+                <h2>Details About Applied Queries</h2>
+                <h3>1. Insert, Update, Delete Menu Items and Staff</h3>
+                <pre><code>
+-- Insert a new menu item
+INSERT INTO MenuItems (item_name, description, price) VALUES
+('Chicken Alfredo', 'Pasta with creamy Alfredo sauce and chicken', 12.99);
+
+-- Update a menu item
+UPDATE MenuItems
+SET price = 10.99
+WHERE item_id = 1;
+
+-- Delete a menu item
+DELETE FROM MenuItems
+WHERE item_id = 3;
+
+-- Insert a new staff member
+INSERT INTO Staff (first_name, last_name, role, hire_date) VALUES
+('Alice', 'Brown', 'Waitress', '2024-03-01');
+
+-- Update a staff member's role
+UPDATE Staff
+SET role = 'Head Chef'
+WHERE staff_id = 2;
+
+-- Delete a staff member
+DELETE FROM Staff
+WHERE staff_id = 1;
+                </code></pre>
+
+                <h3>2. Record Customer Orders and Details</h3>
+                <pre><code>
+-- Record a new order
+INSERT INTO Orders (staff_id, order_date, total_amount) VALUES
+(2, '2024-06-25', 21.98);
+
+-- Record order details
+INSERT INTO OrderDetails (order_id, item_id, quantity, price) VALUES
+(3, 1, 1, 8.99),
+(3, 2, 2, 12.99);
+                </code></pre>
+
+                <h3>3. Query Orders Handled by a Specific Staff Member</h3>
+                <pre><code>
+-- Query orders handled by staff member with staff_id = 2
+SELECT o.order_id, o.order_date, o.total_amount
+FROM Orders o
+JOIN Staff s ON o.staff_id = s.staff_id
+WHERE s.staff_id = 2;
+                </code></pre>
+
+                <h3>4. Calculate Total Revenue Generated in a Specific Period</h3>
+                <pre><code>
+-- Calculate total revenue for orders placed between '2024-06-23' and '2024-06-24'
+SELECT SUM(total_amount) AS total_revenue
+FROM Orders
+WHERE order_date BETWEEN '2024-06-23' AND '2024-06-24';
+                </code></pre>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <p>Restaurant Management System Project &copy; 2024</p>
+    </footer>
+</body>
+</html>

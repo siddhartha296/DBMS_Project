@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Database Using MySQL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Creating Database Using MySQL</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="objective.html">Objective</a></li>
+                <li><a href="requirements.html">Requirements Gathering</a></li>
+                <li><a href="er_diagram.html">ER Diagram</a></li>
+                <li><a href="entity_identification.html">Entity Identification</a></li>
+                <li><a href="database_schema.html">Database Schema</a></li>
+                <li><a href="applied_queries.html">Details About Applied Queries</a></li>
+                <li><a href="normalization.html">Normalization</a></li>
+                <li><a href="conclusion.html">Conclusion</a></li>
+            </ul>
+        </nav>
+        <div id="content">
+            <section>
+                <h2>Creating Database Using MySQL</h2>
+                <pre><code>
+-- Create MenuItems Table
+CREATE TABLE MenuItems (
+    item_id INT PRIMARY KEY AUTO_INCREMENT,
+    item_name VARCHAR(50),
+    description TEXT,
+    price DECIMAL(5,2)
+);
+
+-- Create Staff Table
+CREATE TABLE Staff (
+    staff_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    role VARCHAR(50),
+    hire_date DATE
+);
+
+-- Create Orders Table
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    staff_id INT,
+    order_date DATE,
+    total_amount DECIMAL(10, 2),
+    FOREIGN KEY (staff_id) REFERENCES Staff(staff_id)
+);
+
+-- Create OrderDetails Table
+CREATE TABLE OrderDetails (
+    order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    item_id INT,
+    quantity INT,
+    price DECIMAL(5, 2),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (item_id) REFERENCES MenuItems(item_id)
+);
+                </code></pre>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <p>Restaurant Management System Project &copy; 2024</p>
+    </footer>
+</body>
+</html>

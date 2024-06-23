@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Schema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Database Schema</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="introduction.html">Introduction</a></li>
+                <li><a href="objective.html">Objective</a></li>
+                <li><a href="requirements.html">Requirements Gathering</a></li>
+                <li><a href="er_diagram.html">ER Diagram</a></li>
+                <li><a href="entity_identification.html">Entity Identification</a></li>
+                <li><a href="creating_database.html">Creating Database Using MySQL</a></li>
+                <li><a href="applied_queries.html">Details About Applied Queries</a></li>
+                <li><a href="normalization.html">Normalization</a></li>
+                <li><a href="conclusion.html">Conclusion</a></li>
+            </ul>
+        </nav>
+        <div id="content">
+            <section>
+                <h2>Database Schema</h2>
+                <h3>Tables</h3>
+                <ul>
+                    <li><strong>MenuItems</strong>
+                        <ul>
+                            <li><strong>item_id</strong> (Primary Key)</li>
+                            <li><strong>item_name</strong></li>
+                            <li><strong>description</strong></li>
+                            <li><strong>price</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Staff</strong>
+                        <ul>
+                            <li><strong>staff_id</strong> (Primary Key)</li>
+                            <li><strong>first_name</strong></li>
+                            <li><strong>last_name</strong></li>
+                            <li><strong>role</strong></li>
+                            <li><strong>hire_date</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>Orders</strong>
+                        <ul>
+                            <li><strong>order_id</strong> (Primary Key)</li>
+                            <li><strong>staff_id</strong> (Foreign Key referencing Staff(staff_id))</li>
+                            <li><strong>order_date</strong></li>
+                            <li><strong>total_amount</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>OrderDetails</strong>
+                        <ul>
+                            <li><strong>order_detail_id</strong> (Primary Key)</li>
+                            <li><strong>order_id</strong> (Foreign Key referencing Orders(order_id))</li>
+                            <li><strong>item_id</strong> (Foreign Key referencing MenuItems(item_id))</li>
+                            <li><strong>quantity</strong></li>
+                            <li><strong>price</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <p>Restaurant Management System Project &copy; 2024</p>
+    </footer>
+</body>
+</html>
